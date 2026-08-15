@@ -27,5 +27,22 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Validate package
-        run: node -e "const p=require('./package.json'); const e=require('./src/engine'); if(!e.xxh32||!e.computeReplace) process.exit(1); console.log('package/engine load OK, version', p.version)"
+      - name: Validate package (ESM)
+        run: node --input-type=module -e "const p=await import('./package.json', { with: { type: 'json' } }); const e=await import('./src/engine.js'); if(!e.xxh32||!e.computeReplace) process.exit(1); console.log('package/engine load OK, version', p.default.version)"
+
+  coverage:
+    name: Coverage gate (>= 85% lines)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install
+        run: npm ci
+
+      - name: Run coverage gate
+        run: npm run test:coverage:threshold

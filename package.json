@@ -31,7 +31,9 @@
     "CONTEXT.md"
   ],
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "test:coverage": "node --experimental-test-coverage --test",
+    "test:coverage:threshold": "node scripts/coverage-gate.mjs"
   },
   "engines": {
     "node": ">=20"

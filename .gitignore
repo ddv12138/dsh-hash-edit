@@ -2,6 +2,9 @@
 node_modules/
 .npm-cache*/
 
+# Local pnpm bootstrap used for the runtime profile-mount verification
+.tools/
+
 # Generated runtime store (anchor + undo snapshots)
 .dsh-hash-edit/
 .dsh-hash-edit-store.json

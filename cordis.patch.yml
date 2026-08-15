@@ -4,7 +4,7 @@
 # so the row references the package by name; Node resolution finds the installed code.
 - insert:
     - id: hashline
-      name: 'dsh-hash-edit'
+      name: '@ddv12138/dsh-hash-edit'
       description: >-
         Hash-anchored read / replace / undo_last_replace, hides the built-in edit, appends
         an auto-read anchor block to write results, and injects the hashline usage discipline.

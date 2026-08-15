@@ -1,5 +1,5 @@
 {
-  "name": "dsh-hash-edit",
+  "name": "@ddv12138/dsh-hash-edit",
   "version": "0.1.0",
   "description": "Hash-anchored read/replace/undo for DeepSeek Harness (DSH), ported from pi-hashline-edit-pro. Every line gets a stable 3-char base-62 anchor; stale/ambiguous anchors are rejected, never fuzzy-matched; undo persists across restarts.",
   "license": "MIT",

@@ -1,6 +1,6 @@
 <div align="center">
 
-# dsh-hash-edit
+# @ddv12138/dsh-hash-edit
 
 **Hash-anchored read / replace / undo for DeepSeek Harness (DSH)**
 **为 DeepSeek Harness (DSH) 开发的哈希锚行读写 / 替换 / 撤销插件**
@@ -40,15 +40,15 @@ dsh plugin --profile demo add ./dsh-hash-edit
 # from GitHub 从 GitHub 安装
 dsh plugin --profile demo add github:ddv12138/dsh-hash-edit
 
-# from npm 从 npm 安装（发布后 after publishing）
-dsh plugin --profile demo add dsh-hash-edit
+# from npm 从 npm 安装
+dsh plugin --profile demo add @ddv12138/dsh-hash-edit
 ```
 
-Mounting the bundle's patch inserts the `dsh-hash-edit` row, which **takes over** editing (see next section).
+Mounting the bundle's patch inserts the `@ddv12138/dsh-hash-edit` row, which **takes over** editing (see next section).
 Because you install it per profile, it works from **any preset / profile** — this is how "usable from any
 preset" is realized in DSH's model.
 
-把该 bundle 的 patch 装载进 profile 后，会插入 `dsh-hash-edit` 插件行，从而**接管**编辑（见下节）。
+把该 bundle 的 patch 装载进 profile 后，会插入 `@ddv12138/dsh-hash-edit` 插件行，从而**接管**编辑（见下节）。
 由于是按 profile 安装，它能在**任意 preset / profile** 下工作——这正是 DSH 模型里“任何 preset 都能用”的实现方式。
 
 ---
@@ -80,7 +80,7 @@ If you only want the tools (no takeover), install the `core` plugin instead:
 
 ```yaml
 - id: hashline-core
-  name: 'dsh-hash-edit/core'
+  name: '@ddv12138/dsh-hash-edit/core'
 ```
 
 ---

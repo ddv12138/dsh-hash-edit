@@ -5,8 +5,8 @@
 import * as E from './engine.js'
 import { SEP } from './engine.js'
 
-// Build/refresh the in-memory snapshot for a file's raw text, keeping prior anchors when
-// the content is byte-identical.
+// Build/refresh the in-memory snapshot for a file's raw text, keeping prior anchors AND the
+// last-served range when the content is byte-identical.
 export function openDocument (snap, abs, raw) {
   const n = E.normalizeFile(raw)
   const text = n.text
@@ -19,7 +19,7 @@ export function openDocument (snap, abs, raw) {
     lines,
     hashes: same ? prev.hashes : E.buildHashes(lines, null),
     checksum: E.checksumOf(text),
-    served: null,
+    served: same ? (prev.served || null) : null,
     text
   }
 }
@@ -71,12 +71,20 @@ export function replaceWithServed (entry, undoStore, abs, remove_from, remove_to
   const undoRec = Object.assign({ bom: entry.bom, ending: entry.ending }, r.undo)
   undoStore[abs] = undoRec
 
+  const oldLen = entry.lines.length
+  const removedCount = range.ti - range.fi + 1
   entry.lines = r.newLines
   entry.hashes = r.newHashes
   entry.checksum = E.checksumOf(r.newLines.join('\n'))
   entry.served = { checksum: entry.checksum, idx: r.newLines.map((_, i) => i) }
 
-  return { ok: true, undoRec, writtenText: E.joinLines(r.newLines, entry.bom, entry.ending), removed: range.ti - range.fi + 1, inserted: r.newLines.length }
+  return {
+    ok: true,
+    undoRec,
+    writtenText: E.joinLines(r.newLines, entry.bom, entry.ending),
+    removed: removedCount,
+    inserted: r.newLines.length - (oldLen - removedCount) // net replacement count
+  }
 }
 
 // Apply a single-level undo record, verifying the file has not drifted. Mutates `entry`.

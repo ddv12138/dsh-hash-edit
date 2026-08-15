@@ -1,0 +1,16 @@
+# dsh-hash-edit agent preset — pi-aligned hashline takeover.
+#
+# Mount this preset on a session (or set it as the deployment default) to make the
+# session edit through hash-anchored `read` / `replace` / `undo_last_replace`, with the
+# built-in `edit` hidden and a `write` result carrying a fresh auto-read anchor block.
+#
+# All rows here only CONSUME host capabilities (tools, fs, sandboxPolicy, agents,
+# systemPrompt) and publish no service, so they sit loose — no `isolate` realm is needed.
+# Requires the `dsh-hash-edit` package to be npm-installed (or linked) so the rows resolve.
+
+- id: hashline-takeover
+  name: 'dsh-hash-edit'
+  description: >-
+    Registers hash-anchored read/replace/undo_last_replace, hides the built-in edit,
+    appends an auto-read anchor block to write results, and injects the hashline usage
+    discipline into the system prompt. pi-aligned.

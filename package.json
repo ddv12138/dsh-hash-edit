@@ -1,0 +1,39 @@
+{
+  "name": "dsh-hash-edit",
+  "version": "0.1.0",
+  "description": "Hash-anchored read/replace/undo tools for DeepSeek Harness (DSH), ported from pi-hashline-edit-pro. Every line gets a stable 3-char base-62 anchor; stale/ambiguous anchors are rejected, never fuzzy-matched; undo persists across restarts.",
+  "license": "MIT",
+  "author": "ddv12138",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "hashline",
+    "anchor",
+    "editing",
+    "codis",
+    "plugin",
+    "agent"
+  ],
+  "main": "src/takeover.js",
+  "exports": {
+    ".": "./src/takeover.js",
+    "./core": "./src/plugin.js",
+    "./takeover": "./src/takeover.js",
+    "./engine": "./src/engine.js"
+  },
+  "files": [
+    "src/",
+    "preset/",
+    "README.md",
+    "LICENSE",
+    "CONTEXT.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

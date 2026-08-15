@@ -1,0 +1,8 @@
+name: dsh-hash-edit
+description: >-
+  Hash-anchored read/replace/undo for DSH, ported from pi-hashline-edit-pro. Mounting this
+  preset makes the session edit through stable per-line anchors, hides the built-in edit,
+  appends an auto-read anchor block to write results, and injects the hashline usage
+  discipline — every line carries a stable 3-char anchor, and stale or ambiguous anchors are
+  rejected, never fuzzy-matched. Core tools are also available at host scope via the package
+  `./core` export.

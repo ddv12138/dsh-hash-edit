@@ -1,3 +1,7 @@
+# Dependencies / install artifacts
+node_modules/
+.npm-cache*/
+
 # Generated runtime store (anchor + undo snapshots)
 .dsh-hash-edit/
 .dsh-hash-edit-store.json

@@ -252,7 +252,7 @@ function computeReplace (lines, hashes, fi, ti, replacementText) {
   }
 }
 
-module.exports = {
+export {
   P1, P2, P3, P4, P5, rotl32, readU32, xxh32,
   ALPHABET, HASH_SPACE, HASH_PROBE_STRIDE, SEP,
   canon, idxToHash, hashOfLine, Allocator, idxOfHash,

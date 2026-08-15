@@ -1,0 +1,12 @@
+# dsh-hash-edit — cordis patch layer.
+# Applied when a profile lists this bundle (dsh plugin --profile <name> add dsh-hash-edit).
+# Inserts the pi-aligned takeover plugin. The plugin module is the package main (index.js),
+# so the row references the package by name; Node resolution finds the installed code.
+- insert:
+    - id: hashline
+      name: 'dsh-hash-edit'
+      description: >-
+        Hash-anchored read / replace / undo_last_replace, hides the built-in edit, appends
+        an auto-read anchor block to write results, and injects the hashline usage discipline.
+        Every line carries a stable 3-char anchor; stale/ambiguous anchors are rejected, never
+        fuzzy-matched. Undo persists across restarts.

@@ -1,7 +1,7 @@
 {
   "name": "dsh-hash-edit",
   "version": "0.1.0",
-  "description": "Hash-anchored read/replace/undo tools for DeepSeek Harness (DSH), ported from pi-hashline-edit-pro. Every line gets a stable 3-char base-62 anchor; stale/ambiguous anchors are rejected, never fuzzy-matched; undo persists across restarts.",
+  "description": "Hash-anchored read/replace/undo for DeepSeek Harness (DSH), ported from pi-hashline-edit-pro. Every line gets a stable 3-char base-62 anchor; stale/ambiguous anchors are rejected, never fuzzy-matched; undo persists across restarts.",
   "license": "MIT",
   "author": "ddv12138",
   "keywords": [
@@ -10,20 +10,22 @@
     "hashline",
     "anchor",
     "editing",
-    "codis",
     "plugin",
-    "agent"
+    "agent",
+    "cordis"
   ],
-  "main": "src/takeover.js",
+  "type": "module",
+  "main": "index.js",
   "exports": {
-    ".": "./src/takeover.js",
+    ".": "./index.js",
     "./core": "./src/plugin.js",
     "./takeover": "./src/takeover.js",
     "./engine": "./src/engine.js"
   },
   "files": [
+    "index.js",
+    "cordis.patch.yml",
     "src/",
-    "preset/",
     "README.md",
     "LICENSE",
     "CONTEXT.md"
@@ -34,6 +36,12 @@
   "engines": {
     "node": ">=20"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@deepseek-ai/dsh-tools": "^0.0.1-rc.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
 }

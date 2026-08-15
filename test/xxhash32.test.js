@@ -1,11 +1,10 @@
-'use strict'
-const { test } = require('node:test')
-const assert = require('node:assert')
-const { xxh32 } = require('../src/engine')
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
+import { xxh32 } from '../src/engine.js'
 
 // Official XXH32 (seed 0) vectors, cross-checked against the `xxhashjs` reference
-// implementation in a prior session. Bit-exactness here is what makes anchors
-// byte-identical to pi-hashline-edit-pro.
+// implementation. Bit-exactness here is what makes anchors byte-identical to
+// pi-hashline-edit-pro.
 const VECTORS = {
   '': 0x02cc5d05,
   a: 0x550d7456,
@@ -23,8 +22,6 @@ test('xxh32(seed 0) matches reference vectors exactly', () => {
 })
 
 test('xxh32 is deterministic and respects multibyte UTF-8', () => {
-  // "./" vs "a" — different bytes must differ
   assert.notStrictEqual(xxh32('a', 0), xxh32('b', 0))
-  // same input twice
   assert.strictEqual(xxh32('some content', 0), xxh32('some content', 0))
 })
